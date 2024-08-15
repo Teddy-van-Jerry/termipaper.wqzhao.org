@@ -1,0 +1,125 @@
+<html>
+<head>
+  <title>TermiPaper</title>
+  <meta name="description" content="A terminal-based academic paper manager">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="TermiPaper">
+  <meta property="og:description" content="A terminal-based academic paper manager">
+  <meta property="og:url" content="https://termipaper.wqzhao.org">
+  <meta property="og:site_name" content="TermiPaper">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+  <div class="main-body">
+    <div class="ribbon-region">
+      <h1 class="text-center">TermiPaper</h1>
+      <p class="text-center">A terminal-based academic paper manager</p>
+    </div>
+
+    <p style="padding-top: 1em;">
+      <b>TermiPaper</b> is open source on <a href="https://github.com/Teddy-van-Jerry/termipaper" target="_blank">GitHub</a>
+      under the GPL-3.0 license.
+      It is currently <i>under construction</i>.
+      Crafted with Rust, TermiPaper is designed to be efficient and easy to use.
+      View the current roadmap at <a href="https://github.com/Teddy-van-Jerry/termipaper/issues/1">the GitHub issue "Roadmap for Fundamentals"</a>.
+    </p>
+
+    <h2 id="highlights">Highlights</h2>
+    <p>To be added...</p>
+
+    <h2 id="shared-lists">Shared Lists</h2>
+    <div class="table-wrapper">
+      <table id="shared-lists-table">
+        <tr>
+          <th onclick="sortTable(0)">List</th>
+          <th onclick="sortTable(1)">ID</th>
+          <th onclick="sortTable(2)">Description</th>
+          <th onclick="sortTable(3)">Owner</th>
+          <th onclick="sortTable(4)">Update Date</th>
+        </tr>
+        <tr>
+          <td><a href="/lists/wuqiong-zhao.yml" download>Author: Zhao, Wuqiong</a></td>
+          <td><a href="/lists/wuqiong-zhao.yml" download class="text-tt">wuqiong-zhao</a></td>
+          <td>Publications of Wuqiong Zhao (Ph.D. student at UC San Diego)</td>
+          <td>Wuqiong Zhao</td>
+          <td>2024-08-15</td>
+        </tr>
+        <!-- # LISTS # -->
+      </table>
+    </div>
+
+    <p style="font-size: small"><i>
+      Click the table header to sort.
+      Click the list or ID name to download the list YML file.
+      Date format is YYYY-MM-DD.
+    </i></p>
+
+    <p>
+      Make a <a href="https://github.com/Teddy-van-Jerry/termipaper.wqzhao.org/pulls" target="_blank">pull request</a> to add your shared list to this page.
+      The above table is auto generated via Python by parsing the list files.
+    </p>
+
+    <div class="ribbon-region text-center" style="font-size: small; margin-top: 1rem;">
+      © 2024 <a href="https://github.com/Teddy-van-Jerry" target="_blank">Teddy van Jerry</a> (<a href="https://wqzhao.org" target="_blank">Wuqiong Zhao</a>)
+    </div>
+  </div>
+  <script>
+    // copied from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_desc
+    function sortTable(n) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById("shared-lists-table");
+      switching = true;
+      // Set the sorting direction to ascending:
+      dir = "asc";
+      /* Make a loop that will continue until
+      no switching has been done: */
+      while (switching) {
+        // Start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /* Loop through all table rows (except the
+        first, which contains table headers): */
+        for (i = 1; i < (rows.length - 1); i++) {
+          // Start by saying there should be no switching:
+          shouldSwitch = false;
+          /* Get the two elements you want to compare,
+          one from current row and one from the next: */
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          /* Check if the two rows should switch place,
+          based on the direction, asc or desc: */
+          if (dir == "asc") {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              // If so, mark as a switch and break the loop:
+              shouldSwitch = true;
+              break;
+            }
+          } else if (dir == "desc") {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              // If so, mark as a switch and break the loop:
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+        if (shouldSwitch) {
+          /* If a switch has been marked, make the switch
+          and mark that a switch has been done: */
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          // Each time a switch is done, increase this count by 1:
+          switchcount ++;
+        } else {
+          /* If no switching has been done AND the direction is "asc",
+          set the direction to "desc" and run the while loop again. */
+          if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
