@@ -23,7 +23,7 @@ def generate_one(id: str) -> str:
             list_date = data["update-date"]
             list_owner = data["owner"]["name"]
             try:
-                list_owner_url = data["owner"]["url"]
+                list_owner_url = data["owner"]["link"]
             except KeyError:
                 list_owner_url = None
             list_url = "/lists/" + list_id + ".yml"
